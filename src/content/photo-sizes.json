@@ -1,0 +1,149 @@
+{
+ "/photos/excavator-brick-building.webp": {
+  "w": 960,
+  "h": 1280,
+  "small": [
+   240,
+   400,
+   640
+  ]
+ },
+ "/photos/demolition-orange-building.webp": {
+  "w": 720,
+  "h": 1280,
+  "small": [
+   240,
+   400
+  ]
+ },
+ "/photos/machine-lift-chain-block.webp": {
+  "w": 960,
+  "h": 1280,
+  "small": [
+   240,
+   400,
+   640
+  ]
+ },
+ "/photos/crane-scrap-yard.webp": {
+  "w": 960,
+  "h": 1280,
+  "small": [
+   240,
+   400,
+   640
+  ]
+ },
+ "/photos/excavator-tearing-wall.webp": {
+  "w": 960,
+  "h": 1280,
+  "small": [
+   240,
+   400,
+   640
+  ]
+ },
+ "/photos/excavator-rubble.webp": {
+  "w": 590,
+  "h": 1280,
+  "small": [
+   240,
+   400
+  ]
+ },
+ "/photos/roof-truss-dismantling.webp": {
+  "w": 925,
+  "h": 1280,
+  "small": [
+   240,
+   400,
+   640
+  ]
+ },
+ "/photos/steel-frame-dismantling.webp": {
+  "w": 675,
+  "h": 1280,
+  "small": [
+   240,
+   400
+  ]
+ },
+ "/photos/machinery-loading-truck.webp": {
+  "w": 960,
+  "h": 1280,
+  "small": [
+   240,
+   400,
+   640
+  ]
+ },
+ "/photos/gas-cutting.webp": {
+  "w": 960,
+  "h": 1280,
+  "small": [
+   240,
+   400,
+   640
+  ]
+ },
+ "/photos/cleared-site.webp": {
+  "w": 615,
+  "h": 1280,
+  "small": [
+   240,
+   400
+  ]
+ },
+ "/photos/breaker-on-roof.webp": {
+  "w": 963,
+  "h": 1280,
+  "small": [
+   240,
+   400,
+   640
+  ]
+ },
+ "/photos/excavator-on-site.webp": {
+  "w": 647,
+  "h": 800,
+  "small": [
+   240,
+   400
+  ]
+ },
+ "/photos/site-debris.webp": {
+  "w": 960,
+  "h": 1280,
+  "small": [
+   240,
+   400,
+   640
+  ]
+ },
+ "/photos/excavator-pulling-building.webp": {
+  "w": 960,
+  "h": 1280,
+  "small": [
+   240,
+   400,
+   640
+  ]
+ },
+ "/photos/excavator-brick-building-wide.webp": {
+  "w": 2000,
+  "h": 1707,
+  "small": [
+   640,
+   1024,
+   1440
+  ]
+ },
+ "/photos/crane-lifting-structure.webp": {
+  "w": 590,
+  "h": 1037,
+  "small": [
+   240,
+   400
+  ]
+ }
+}

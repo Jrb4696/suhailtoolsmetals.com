@@ -1,0 +1,13 @@
+node_modules
+dist
+.ssr
+.taste-skill/chrome-*
+shots
+*.local
+.DS_Store
+
+# kept local, not published to the public repo
+media-originals/
+*.pptx
+.taste-skill/
+.ssr/

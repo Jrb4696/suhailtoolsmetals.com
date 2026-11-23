@@ -1,0 +1,179 @@
+/*
+  Page CSS. The design system lives in /public/assets (system.css, layout.css, motion.css): use its classes
+  and tokens. Only what sits inside a picture, or a size the kit leaves to the page, belongs here.
+  Widths: phone under 640, tablet 640 to 1023, laptop 1024 to 1279, desktop 1280 and up.
+*/
+
+/* the client's logo in the bar and the footer */
+.nav__logo img { height: 40px; }
+@media (max-width: 639px) { .nav__logo img { height: 32px; } }
+.footer__logo img { height: 160px; width: auto; }
+
+/* the header: the logo on the left line, the words and the main action together on the right */
+@media (min-width: 1024px) { .nav .nav__links { justify-content: flex-end; } }
+
+/* ---- the framed hero (Hero.jsx). One rounded photograph across the wrap; the words sit in a panel of
+   the page ground cut out of its top left corner, the two inner corners of the cut rounded off by
+   ::before and ::after; an angled card is cut into the lower right corner, its ground-coloured band
+   (.hero-card::before) and its own shape both drawn as SVG masks on a 320 square, so they scale together. */
+.hero--frame { --hgap: 12px; --hpadb: 20px; --fr: 28px; }
+.hero-frame { position: relative; height: 100%; }
+.hero-frame__media { position: absolute; inset: 0; border-radius: var(--fr); overflow: hidden; background: var(--surface); }
+.hero-frame__media > img { width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.hero-frame__tab { position: absolute; top: 0; left: 0; z-index: 1; width: min(50%, 660px);
+  padding: 0 var(--s-7) var(--s-7) 0; background: var(--bg); border-bottom-right-radius: var(--fr); }
+.hero-frame__tab::before, .hero-frame__tab::after { content: ""; position: absolute; width: var(--fr); height: var(--fr); pointer-events: none;
+  background: radial-gradient(circle at 100% 100%, transparent calc(var(--fr) - 0.5px), var(--bg) var(--fr)); }
+.hero-frame__tab::before { top: 0; left: 100%; }
+.hero-frame__tab::after { top: 100%; left: 0; }
+.hero--frame h1 { font-size: var(--ly-h1-xl); text-box: trim-start cap alphabetic; }
+.hero-frame__tab > .hero-frame__row { display: flex; align-items: flex-start; gap: var(--s-5); margin-top: var(--s-7); }
+.hero-frame__inset { flex: none; width: 128px; aspect-ratio: 4 / 5; border-radius: var(--r-lg); overflow: hidden; background: var(--surface); }
+.hero-frame__inset > img { width: 100%; height: 100%; object-fit: cover; }
+.hero-frame__copy { min-width: 0; }
+.hero-frame__copy .hero__lead { font-size: 17px; }
+.hero-frame__copy > .btn-row { margin-top: var(--s-5); }
+
+.hero-card { position: absolute; right: 0; bottom: 0; z-index: 1; width: clamp(200px, 22vw, 320px); aspect-ratio: 1; color: #fff; }
+.hero-card::before { content: ""; position: absolute; inset: 0; background: var(--bg);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'%3E%3Cpolygon points='68,201.6 201.6,68 292,68 292,292 68,292' stroke='black' stroke-width='76' stroke-linejoin='round'/%3E%3Cpath d='M10 320A20 20 0 0 0 30 300V320ZM320 10A20 20 0 0 1 300 30H320Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'%3E%3Cpolygon points='68,201.6 201.6,68 292,68 292,292 68,292' stroke='black' stroke-width='76' stroke-linejoin='round'/%3E%3Cpath d='M10 320A20 20 0 0 0 30 300V320ZM320 10A20 20 0 0 1 300 30H320Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat; }
+.hero-card__shape { position: absolute; inset: 0; overflow: hidden; background: var(--p-inv-bg);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'%3E%3Cpolygon points='68,201.6 201.6,68 292,68 292,292 68,292' stroke='black' stroke-width='56' stroke-linejoin='round'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'%3E%3Cpolygon points='68,201.6 201.6,68 292,68 292,292 68,292' stroke='black' stroke-width='56' stroke-linejoin='round'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat; }
+.hero-card__shape > img { width: 100%; height: 100%; max-width: none; object-fit: cover; transition: transform 500ms var(--ease); }
+.hero-card__shape::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / .7), rgb(0 0 0 / 0) 60%); }
+.hero-card__label { position: absolute; z-index: 1; left: 18%; right: 7%; bottom: 8%; display: flex; align-items: center; justify-content: space-between;
+  gap: var(--s-3); font-size: 15px; font-weight: 500; line-height: 1.3; }
+.hero-card__go { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #fff; color: #1a1a1a;
+  transition: transform var(--dur) var(--ease); }
+.hero-card__go svg { width: 14px; height: 14px; }
+@media (hover: hover) and (pointer: fine) {
+  .hero-card:hover .hero-card__shape > img { transform: scale(1.03); }
+  .hero-card:hover .hero-card__go { transform: translate(2px, -2px); }
+}
+/* a tablet and a phone: the words above, the photograph in what is left, the card in its corner */
+@media (max-width: 1023px) {
+  .hero-frame { display: flex; flex-direction: column; }
+  .hero-frame__tab { position: static; order: -1; width: auto; padding: 0; background: none; border-radius: 0; }
+  .hero-frame__tab::before, .hero-frame__tab::after { display: none; }
+  .hero-frame__media { position: relative; inset: auto; flex: 1 1 0; min-height: 240px; margin-top: var(--s-6); }
+  .hero-card { width: clamp(150px, 34vw, 240px); }
+}
+@media (max-width: 639px) {
+  .hero-frame__inset { display: none; }
+  .hero-frame__tab > .hero-frame__row { margin-top: var(--s-5); }
+  .hero-card__label { font-size: 14px; }
+  .hero-card__go { width: 32px; height: 32px; }
+}
+
+/* the Services panel's three photograph cards */
+.menu-card .panel { --p-h: 200px; }
+
+/* a second, quieter line under a row's name (a project's client) */
+.rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
+.rows--tight > li { padding-block: var(--s-3); }
+.rows--tight > li:first-child { padding-top: 0; }
+
+/* #services on a phone: tighter rows and a wide photograph, so the section is one screen */
+@media (max-width: 639px) {
+  #services .rows > li { padding-block: var(--s-3); }
+  #services .rows > li:first-child { padding-top: 0; }
+  #services .section-head > p { display: none; }
+  #services .frame { margin-top: var(--s-5); min-height: 0; height: 260px; }
+}
+
+/* #process: one height for the three step photographs; three across from the laptop up */
+#process .panel { --p-h: 336px; }
+@media (min-width: 640px) and (max-width: 1279px) {
+  #process .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #process .grid > .card.span-4 { grid-column: auto; }
+  #process .panel { --p-h: clamp(220px, 32svh, 380px); }
+}
+/* a phone: two screens; the three step photographs share whatever height the words leave, so the
+   section ends on its bottom padding like every other */
+@media (max-width: 639px) {
+  #process { --hm: 2; }
+  #process .wrap { height: 100%; display: flex; flex-direction: column; }
+  #process .wrap > .grid { flex: 1 1 0; min-height: 0; grid-template-rows: repeat(3, minmax(0, 1fr)); }
+  #process .card { display: flex; flex-direction: column; min-height: 0; }
+  #process .card > .panel { flex: 1 1 0; height: auto; min-height: 160px; }
+}
+
+/* #projects: the photograph that develops, as tall as the list beside it */
+#projects .develop { margin: 0; position: relative; overflow: hidden; border-radius: var(--r-lg); align-self: stretch; min-height: 320px; }
+#projects .develop > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 640px) and (max-width: 1023px) {
+  #projects .grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  #projects .grid > .span-6:not(.develop) { grid-column: 1 / span 7; }
+  #projects .grid > .develop { grid-column: 8 / -1; min-height: 0; }
+}
+@media (max-width: 639px) {
+  #projects .section-head > p { display: none; }
+  #projects .develop { min-height: 0; align-self: stretch; }   /* the second phone screen: the photograph alone */
+}
+
+/* #milestones: two columns of rows, then three photographs of one height and three widths (5, 4, 3 columns).
+   From 640px the two groups (.ms__a, .ms__b) dissolve into one grid; on a phone each is one screen (.g2m). */
+#milestones .strip { margin-top: var(--s-6); }
+#milestones .strip .frame { --ratio: 0px; height: clamp(120px, calc(var(--ly-fit) * .28), 216px); }
+@media (min-width: 640px) {
+  #milestones .ms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start; }
+  #milestones .ms__a, #milestones .ms__b { display: contents; }
+  #milestones .section-head { grid-column: 1 / -1; grid-row: 1; }
+  #milestones .ms__a > .rows { grid-column: 1; grid-row: 2; }
+  #milestones .ms__b > .rows { grid-column: 2; grid-row: 2; }
+  #milestones .strip { grid-column: 1 / -1; grid-row: 3; }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  #milestones .strip { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  #milestones .strip > :nth-child(1) { grid-column: auto / span 5; }
+  #milestones .strip > :nth-child(2) { grid-column: auto / span 4; }
+  #milestones .strip > :nth-child(3) { grid-column: auto / span 3; }
+  #milestones .strip .frame { height: clamp(160px, 22svh, 260px); }
+}
+@media (max-width: 639px) {
+  #milestones .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #milestones .strip > * { grid-column: auto; }
+  #milestones .strip > :nth-child(1) { grid-column: 1 / -1; }
+  #milestones .strip .frame { height: 124px; }
+}
+
+/* #video: one player beside the list of clips; the portrait clip sits whole on a dark ground */
+#video .player { background: var(--p-ink); }
+#video .player > video.frame__img { object-fit: contain; }
+@media (max-width: 1023px) { #video .player { margin-top: var(--s-6); --ratio: 100%; } }
+/* a phone: the clip names only, and the player takes the height that is left, so a narrow screen never overflows */
+@media (max-width: 639px) {
+  #video .section-head > p, #video .rows > li > p { display: none; }
+  #video .wrap { height: 100%; display: flex; flex-direction: column; }
+  #video .wrap > .grid { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
+  #video .player { flex: 1 1 0; --ratio: 0px; min-height: 120px; }
+  #video .player > video.frame__img { object-fit: cover; }   /* fill the frame: no dark side bars on a phone */
+  #video .rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); }   /* the four clip names two by two */
+  #video .rows > li:nth-child(2) { padding-top: 0; }
+}
+
+/* #equipment: the list, then two portrait photographs; the list in two columns on a tablet */
+@media (min-width: 640px) and (max-width: 1023px) {
+  #equipment .grid > .rows { columns: 2; column-gap: var(--gutter); }
+  #equipment .grid > .rows > li { break-inside: avoid; }
+  #equipment .grid > .frame { grid-column: auto / span 6; }
+}
+@media (max-width: 639px) {
+  #equipment .grid > .rows > li { padding-block: var(--s-2); }
+  #equipment .grid > .rows > li:first-child { padding-top: 0; }
+  #equipment .grid > .frame { grid-column: auto / span 6; }
+}
+
+/* #quote: the form on the surface ground, never over a photograph */
+.quote__panel { background: var(--surface); padding: var(--s-7); border-radius: var(--r-lg); }
+.quote__panel textarea { min-height: 96px; }
+.rows--who > li { padding-block: var(--s-3); }
+@media (max-width: 1279px) { .quote__panel { padding: var(--s-6); } }
+@media (min-width: 640px) and (max-width: 1023px) {
+  #quote .quote__text { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--gutter); }
+  #quote .quote__text > * { margin-top: 0; }
+  #quote .quote__text > p { grid-column: 1; }
+  #quote .quote__text > .stack-4 { grid-column: 2; grid-row: 1 / span 2; }
+  #quote .quote__panel { margin-top: var(--s-6); }
+}
+@media (max-width: 639px) { .quote__panel { padding: var(--s-5); } }
