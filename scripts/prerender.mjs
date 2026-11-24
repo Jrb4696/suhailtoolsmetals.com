@@ -14,7 +14,10 @@ const { legacyRoutes } = await import(pathToFileURL(join(root, 'src/content/site
 const file = join(root, 'dist/index.html');
 let html = readFileSync(file, 'utf8');
 
-const redirect = `<script>(function(){var m=${JSON.stringify(legacyRoutes)};var p=location.pathname.replace(/\\/+$/,'')||'/';if(m[p])location.replace('/'+m[p]);else if(p!=='/'&&p!=='/index.html')location.replace('/');})()</script>`;
+// SITE_BASE serves the site from a sub-folder (GitHub Pages: /<repo>/). Default '/' = top of a domain.
+const BASE = ('/' + (process.env.SITE_BASE || '').replace(/^\/+|\/+$/g, '') + '/').replace('//', '/');
+
+const redirect = `<script>(function(){var b=${JSON.stringify(BASE)},m=${JSON.stringify(legacyRoutes)};var p=location.pathname;if(p.indexOf(b)===0)p='/'+p.slice(b.length);p=p.replace(/\\/+$/,'')||'/';if(m[p])location.replace(b+m[p]);else if(p!=='/'&&p!=='/index.html')location.replace(b);})()</script>`;
 const kit = ['/assets/system.js', '/assets/motion/motion.js', '/assets/layout/layout.js']
   .map((src) => `<script type="module" src="${src}"></script>`).join('\n');
 
@@ -32,6 +35,13 @@ html = html
   .replace('<div id="root"></div>', `${page}\n${kit}`);
 
 if (html.includes('id="root"')) throw new Error('prerender: <div id="root"></div> not found in dist/index.html');
+
+if (BASE !== '/') {
+  // Every root path in the page (src, href, srcset entries, url()) gets the sub-folder in front.
+  html = html.replace(/(["'(\s,])\/(assets|photos|video|brand|_app|share\.jpg)(?=[/"'\s)?])/g, `$1${BASE}$2`);
+  writeFileSync(join(root, 'dist/.nojekyll'), ''); // GitHub Pages would otherwise hide the _app folder
+  writeFileSync(join(root, 'dist/404.html'), html); // old addresses (/services ...) still land on the page
+}
 writeFileSync(file, html);
 for (const f of readdirSync(join(root, 'dist/_app'))) if (f.endsWith('.js')) rmSync(join(root, 'dist/_app', f));
 rmSync(join(root, '.ssr'), { recursive: true, force: true });
