@@ -12,11 +12,12 @@ import Quote from './sections/Quote';
 
 /*
   type: service (site-kind other)
-  deal: hero split, nav-split, close-photo, footer-columns, rhythm surface-pairs (#video),
+  deal: hero framed, nav (logo left), footer-columns (the close-photo band was removed at the client's request),
         buttons solid, mark: the client's own logo; palette from the logo (stone ground, bronze #9e6a2c);
         type literata (Literata / Figtree)
   moments: picture-develops (#projects, the photograph beside the current jobs), word-highlight (#safety)
-  Every section is one or two screens at 1440x900; the order is the page.
+  The client asked for even gaps over one-section-per-screen: every section after the hero is as tall as its content,
+  with one padding above and below, and the sections alternate white and cream from the hero (page.css). The order is the page.
 */
 export default function App() {
   return (

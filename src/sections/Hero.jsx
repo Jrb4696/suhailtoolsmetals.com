@@ -26,8 +26,8 @@ export default function Hero() {
           <div className="hero-frame__tab hero__text">
             <h1 id="hero-h">{hero.title}</h1>
             <div className="hero-frame__row">
-              <div className="hero-frame__inset">
-                <Photo src={hero.inset.src} alt={hero.inset.alt} sizes="128px" subject="crane lift" />
+              <div className="hero-frame__inset" data-enter-media>
+                <Photo src={hero.inset.src} alt={hero.inset.alt} sizes="(max-width: 1023px) 128px, 200px" subject="crane lift" />
               </div>
               <div className="hero-frame__copy">
                 <p className="hero__lead">{hero.lead}</p>

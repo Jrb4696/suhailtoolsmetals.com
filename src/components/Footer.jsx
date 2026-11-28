@@ -1,26 +1,12 @@
-import Arrow from './Arrow';
-import Photo from './Photo';
-import { close, company, footer, mainAction, mapSearch } from '../content/site';
+import { company, footer, mapSearch } from '../content/site';
 
-// footer.closing: row 1 the dealt close (close-photo), row 2 the dealt footer (footer-columns).
+// The footer: the logo and lede, the link columns, the contact lines, then the legal row (footer-columns).
+// The photograph close above it was taken out at the client's request; the quote section is the page's last ask.
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="footer closing" id="contact" aria-labelledby="close-h">
+    <footer className="footer closing" id="contact" aria-label="Site footer">
       <div className="wrap">
-        <div className="closing__cta close--photo">
-          <div className="section-head--split">
-            <div>
-              <h2 id="close-h">{close.title}</h2>
-              <p className="t-lead">{close.line}</p>
-            </div>
-            <a className="btn btn--primary" href={mainAction.href}>{mainAction.label}<Arrow /></a>
-          </div>
-          <div className="close__media">
-            <Photo src={close.photo.src} alt={close.photo.alt} sizes="(max-width: 1279px) 100vw, 1280px" style={{ '--pos': close.photo.pos }} loading="lazy" subject="demolition site" />
-          </div>
-        </div>
-
         <div className="closing__links">
           <div className="grid">
             <div className="span-4 stack-4">

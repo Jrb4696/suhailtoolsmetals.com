@@ -45,7 +45,7 @@ export const hero = {
   photo: {
     src: '/photos/excavator-brick-building-wide.webp',
     alt: 'A Tata Hitachi excavator pulling down a brick building, rubble heaped in front of it',
-    pos: '50% 58%',
+    pos: '50% 42%',
   },
   // the small photograph beside the lead
   inset: {
@@ -62,7 +62,8 @@ export const hero = {
 
 export const services = {
   title: 'Services for buildings, plants and scrap yards',
-  lead: 'One crew handles each job, from the valuation to the last load of debris.',
+  // two lines on a laptop and up (Services.jsx breaks after the first)
+  lead: ['One crew handles each job,', 'from the valuation to the last load of debris.'],
   items: [
     {
       key: 'demolition',
@@ -85,19 +86,19 @@ export const services = {
   ],
 };
 
-// From the company deck, "Current ongoing projects".
+// From the company deck, "Current ongoing projects". The client logos are in /clients (originals in "Client Logos/").
 export const currentProjects = {
   title: '7 projects on site now',
   lead: 'For public bodies and manufacturers in Tamil Nadu and Puducherry.',
   photo: { src: '/photos/excavator-tearing-wall.webp', alt: 'An excavator arm tearing the wall off a building above a heap of broken brick' },
   items: [
-    { job: 'Demolition of tile-roofed buildings', client: 'Anna University', place: 'Chennai' },
-    { job: 'Machinery scrap disposal', client: 'Hindustan National Glass and Industries', place: 'Puducherry' },
-    { job: 'Dismantling and disposal of a shed', client: 'Global TVS', place: 'Tiruchirappalli' },
-    { job: 'Scrap yard disposal', client: 'Corporation of Chennai', place: 'Chennai' },
-    { job: 'Dismantling a 40-ton boiler', client: 'Dharmapuri Co-operative Sugar Mills', place: 'Dharmapuri' },
-    { job: 'Dip unit, 60 metres an hour', client: 'MRF Tyres', place: 'Arakkonam' },
-    { job: 'DVOR counterpoise pole at the runway', client: 'Airport Authority of India', place: 'Chennai' },
+    { job: 'Demolition of tile-roofed buildings', client: 'Anna University', logo: '/clients/anna-university.webp', logoSize: [51, 51], place: 'Chennai' },
+    { job: 'Machinery scrap disposal', client: 'Hindustan National Glass and Industries', logo: '/clients/hindustan-national-glass.webp', logoSize: [73, 36], place: 'Puducherry' },
+    { job: 'Dismantling and disposal of a shed', client: 'Global TVS', logo: '/clients/global-tvs.webp', logoSize: [104, 21], place: 'Tiruchirappalli' },
+    { job: 'Scrap yard disposal', client: 'Corporation of Chennai', logo: '/clients/corporation-of-chennai.webp', logoSize: [41, 56], place: 'Chennai' },
+    { job: 'Dismantling a 40-ton boiler', client: 'Dharmapuri Co-operative Sugar Mills', logo: '/clients/dharmapuri-sugar-mills.webp', logoSize: [45, 56], place: 'Dharmapuri' },
+    { job: 'Dip unit, 60 metres an hour', client: 'MRF Tyres', logo: '/clients/mrf.webp', logoSize: [50, 52], place: 'Arakkonam' },
+    { job: 'DVOR counterpoise pole at the runway', client: 'Airport Authority of India', logo: '/clients/airports-authority-of-india.webp', logoSize: [62, 42], place: 'Chennai' },
   ],
 };
 
@@ -171,13 +172,13 @@ export const equipment = {
   title: 'Equipment we bring to every job',
   lead: 'Our own demolition crew brings the kit to break, cut, lift and move heavy plant.',
   items: [
-    'Excavators',
-    'Hand and compressor breakers',
-    'Cranes and forklifts',
-    'Chain blocks',
-    'Gas cutting sets and hand tools',
-    'Scrap handling machinery',
-    'Trolleys, skates and Raise-n-Roll movers',
+    { name: 'Excavators', icon: 'excavator' },
+    { name: 'Hand and compressor breakers', icon: 'breaker' },
+    { name: 'Cranes and forklifts', icon: 'crane' },
+    { name: 'Chain blocks', icon: 'chainBlock' },
+    { name: 'Gas cutting sets and hand tools', icon: 'torch' },
+    { name: 'Scrap handling machinery', icon: 'magnet' },
+    { name: 'Trolleys, skates and Raise-n-Roll movers', icon: 'trolley' },
   ],
   photos: [
     { src: '/photos/breaker-on-roof.webp', alt: 'A worker breaking a concrete roof with a hand breaker, tower blocks behind' },
@@ -195,14 +196,24 @@ export const quote = {
     'HR, production and stores managers',
     'Bank recovery departments',
   ],
+  // the form's site fields: a state, then a city in it (places.js), the service and anything else
+  site: {
+    state: 'State',
+    city: 'City',
+    cityWait: 'Choose the state first',
+    cityOther: 'Other',
+    cityOtherLabel: 'Which town or city?',
+    service: 'Service you need',
+    serviceChoose: 'Choose a service',
+    serviceOther: 'Other',
+    serviceOtherLabel: 'Which service?',
+    serviceOtherPlaceholder: 'For example, dismantling a cooling tower',
+    details: 'Anything else we should know',
+    detailsHint: 'Optional',
+    detailsPlaceholder: 'Size of the site, what needs to go, when you need it cleared',
+  },
   sent: 'Your quote request is in. We call or email you back.',
   reply: 'We call or email you back with a valuation.',
-};
-
-export const close = {
-  title: 'Bring us the site, we clear it',
-  line: 'Office in Guindy and a godown in Thirumudivakkam, Chennai.',
-  photo: { src: '/photos/site-debris.webp', alt: 'Broken brick and earth on a site behind green safety netting', pos: '50% 55%' },
 };
 
 export const footer = {

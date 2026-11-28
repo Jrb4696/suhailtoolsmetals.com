@@ -39,7 +39,7 @@ PHOTOS = {
 # bottom, long-side cap, small widths). The homepage frame is wide, so it gets a landscape cut of the
 # 3024x4032 hero original; the crane original has black bars above and below, cropped off.
 CUTS = [
-    ('hero/media_1.jpeg', 'excavator-brick-building-wide', (0, .22, 1, .86), 2000, (640, 1024, 1440)),
+    ('hero/media_1.jpeg', 'excavator-brick-building-wide', (0, .12, 1, .84), 2000, (640, 1024, 1440)),
     ('projects/media_1.jpeg', 'crane-lifting-structure', (0, .09, 1, .9), 1280, (240, 400)),
 ]
 BIG = set()  # names allowed up to 1600px; none needed now

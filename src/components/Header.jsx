@@ -9,7 +9,10 @@ export default function Header() {
       <div className="wrap nav__bar">
         <a className="skip-link" href="#top">Skip to content</a>
         <a className="nav__logo" href="#top">
-          <img src="/brand/logo-horizontal.svg" alt={company.name} width="938" height="226" />
+          <picture>
+            <source media="(max-width: 399px)" srcSet="/brand/favicon.svg" width="48" height="48" />
+            <img src="/brand/logo-horizontal.svg" alt={company.name} width="938" height="226" />
+          </picture>
         </a>
         <nav className="nav__links" aria-label="Main">
           <div className="nav__item">

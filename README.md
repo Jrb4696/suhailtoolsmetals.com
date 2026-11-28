@@ -35,8 +35,9 @@ To add or swap a photo: put the original in `media-originals/`, add one line to 
 `/photos/<name>.webp` in `src/content/site.js`.
 
 Page order: hero · services · how a job runs · current projects · milestones · safety statement ·
-video · equipment · quote form · close and footer. Each section is exactly one screen tall on a
-laptop (two on a phone where needed).
+video · equipment · quote form · footer. Every section after the hero is as tall as its content, with the
+same padding above and below, and the sections alternate white and cream starting from the white hero.
+The quote form asks for the site's state and city (lists in `src/content/places.js`), the service and an optional note.
 
 ## Still needed from the client
 

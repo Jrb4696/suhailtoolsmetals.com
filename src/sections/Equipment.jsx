@@ -1,6 +1,8 @@
+import EquipIcon from '../components/EquipIcon';
 import Photo from '../components/Photo';
 import { equipment } from '../content/site';
 
+// The kit list, each line with a small bronze line icon (EquipIcon), then two portrait photographs.
 export default function Equipment() {
   return (
     <section className="section" id="equipment" aria-labelledby="equipment-h">
@@ -12,7 +14,7 @@ export default function Equipment() {
         <div className="grid grid--top">
           <ul className="rows span-4">
             {equipment.items.map((item) => (
-              <li key={item}><span className="rows__name">{item}</span></li>
+              <li key={item.name}><span className="rows__name equip-name"><EquipIcon name={item.icon} />{item.name}</span></li>
             ))}
           </ul>
           {equipment.photos.map((ph) => (
